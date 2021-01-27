@@ -24,7 +24,7 @@
         </aside>
 
         <div
-          class="w-full pb-24"
+          class="w-full pb-24 pt-8"
           :class="{'pl-0 lg:pl-12 lg:w-3/4': hasSidebar}"
         >
           <slot />

@@ -27,7 +27,10 @@ query ($Slug: String)  {
       }
     }
   }
-  allChiselSection {
+  allChiselSection(sort:{ 
+    by:"Index"
+    order: ASC
+  }) {
     edges {
       node {
         path
