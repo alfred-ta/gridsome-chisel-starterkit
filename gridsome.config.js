@@ -21,7 +21,7 @@ module.exports = {
     github: process.env.URL_GITHUB || false,
     nav: {
       links: [
-        { path: '/docs/', title: 'Docs' }
+        { path: '/documents/custom-domain-setup', title: 'Documentation' }
       ]
     },
     sidebar: [
