@@ -6,10 +6,8 @@
         </div>
 
         <div class="order-1 w-full md:w-2/3" v-if="$page.allChiselDocument && $page.allChiselDocument.edges && $page.allChiselDocument.edges.length > 0">
-          <h3>{{ $page.allChiselDocument.edges[0].node.Title }}</h3>
-          <div class="content" v-html="$page.allChiselDocument.edges[0].node.Body" />
-          <div class="content" v-html="convertedHTML" />
-          
+          <h1 :slug="$page.allChiselDocument.edges[0].node.Slug">{{ $page.allChiselDocument.edges[0].node.title }}</h1>
+          <div class="content" v-html="convertedHTML" />          
         </div>
 
       </div>
@@ -26,6 +24,18 @@ query ($Slug: String)  {
         Slug,
         Summary,
         Body
+      }
+    }
+  }
+  allChiselSection {
+    edges {
+      node {
+        path
+        title
+        Documents {
+          title
+          Slug
+        }
       }
     }
   }
@@ -96,4 +106,8 @@ export default {
 
 <style>
 @import 'prism-themes/themes/prism-material-oceanic.css';
+code[class*="language-"], pre[class*="language-"], code.hljs {
+  display: block;
+  padding: 1.25rem 1rem;
+}
 </style>
