@@ -11,6 +11,10 @@ module.exports = {
     touchicon: './src/assets/favicon.png'
   },
   siteUrl: (process.env.SITE_URL ? process.env.SITE_URL : 'https://example.com'),
+  templates: {
+    ChiselSection: '/sections/:id',
+    ChiselDocument: '/documents/:Slug'
+  },
   settings: {
     web: process.env.URL_WEB || false,
     twitter: process.env.URL_TWITTER || false,
@@ -58,6 +62,16 @@ module.exports = {
             '@gridsome/remark-prismjs'
           ]
         }
+      }
+    },
+    {
+      use: "gridsome-source-local-chisel",
+      options: {
+        typeName: "Chisel",
+        appId: process.env.CHISEL_APP_ID,
+        serverURL: process.env.CHISEL_SERVER_URL,
+        masterKey: process.env.CHISEL_MASTER_KEY,
+        siteId: process.env.CHISEL_SITE_ID
       }
     },
 

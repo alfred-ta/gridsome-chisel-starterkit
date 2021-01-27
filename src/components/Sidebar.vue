@@ -68,13 +68,15 @@ export default {
       return this.$page.allMarkdownPage.edges.map(edge => edge.node);
     },
     sidebar() {
+      return null;
       return this.$static.metadata.settings.sidebar.find(
         sidebar => sidebar.name === this.$page.markdownPage.sidebar
       );
     },
     showSidebar() {
-      return this.$page.markdownPage.sidebar
-        && this.sidebar;
+      return false;
+      /* return this.$page.markdownPage.sidebar
+        && this.sidebar; */
     },
     currentPage() {
       return this.$page.markdownPage;
