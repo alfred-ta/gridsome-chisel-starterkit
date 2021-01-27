@@ -11,6 +11,8 @@
     "autoprefixer": "^9",
     "gridsome": "^0.7.0",
     "postcss": "^7",
+    "showdown": "^1.9.1",
+    "showdown-highlight": "^2.1.5",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   },
   "devDependencies": {

@@ -48,6 +48,9 @@ module.exports = {
       }
     ]
   },
+  transformers: {
+    remark: {}
+  },
   plugins: [
     {
       use: '@gridsome/source-filesystem',
@@ -71,7 +74,14 @@ module.exports = {
         appId: process.env.CHISEL_APP_ID,
         serverURL: process.env.CHISEL_SERVER_URL,
         masterKey: process.env.CHISEL_MASTER_KEY,
-        siteId: process.env.CHISEL_SITE_ID
+        siteId: process.env.CHISEL_SITE_ID,
+        remark: {
+          externalLinksTarget: '_blank',
+          externalLinksRel: ['noopener', 'noreferrer'],
+          plugins: [
+            '@gridsome/remark-prismjs'
+          ]
+        }
       }
     },
 

@@ -8,8 +8,8 @@
         <div class="order-1 w-full md:w-2/3" v-if="$page.allChiselDocument && $page.allChiselDocument.edges && $page.allChiselDocument.edges.length > 0">
           <h3>{{ $page.allChiselDocument.edges[0].node.Title }}</h3>
           <div class="content" v-html="$page.allChiselDocument.edges[0].node.Body" />
-          <div class="mt-8 pt-8 lg:mt-12 lg:pt-12 border-t border-ui-border">
-          </div>
+          <div class="content" v-html="convertedHTML" />
+          
         </div>
 
       </div>
@@ -35,6 +35,8 @@ query ($Slug: String)  {
 <script>
 import OnThisPage from '@/components/OnThisPage.vue';
 import NextPrevLinks from '@/components/NextPrevLinks.vue';
+import showdown from 'showdown';
+import showdownHighlight from 'showdown-highlight';
 
 export default {
   components: {
@@ -77,6 +79,16 @@ export default {
           content: summary
         },
       ]
+    }
+  },
+  computed: {
+    convertedHTML() {
+      const converter = new showdown.Converter({
+        extensions: [showdownHighlight]
+      });
+      const md = this.$page.allChiselDocument.edges[0].node.Body;
+      const html = converter.makeHtml(md);
+      return html;
     }
   }
 }
